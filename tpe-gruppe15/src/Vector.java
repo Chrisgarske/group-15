@@ -1,13 +1,30 @@
 
 public class Vector {
+	
+	public int x;
+	public int y;
+	public int z;
 
-	public Vector(int i, int j, int k) {
-		// TODO Auto-generated constructor stub
+	public Vector(){
+		
+	}
+	
+	public Vector(int x, int y, int z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
 	}
 
-	public double betrag() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	
+	public int getZ(){
+		return z;
 	}
 
 }
