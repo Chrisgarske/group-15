@@ -27,4 +27,15 @@ public class Vector {
 		return z;
 	}
 
+	public Vector addiere(Vector v2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public double betrag() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 }
