@@ -1,41 +1,79 @@
-
 public class Vector {
-	
-	public int x;
-	public int y;
-	public int z;
 
-	public Vector(){
-		
+	private double x;
+	private double y;
+	private double z;
+
+	public Vector() {
+
 	}
-	
-	public Vector(int x, int y, int z) {
+
+	public Vector(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 
-	public int getX(){
+	public double getX() {
 		return x;
 	}
-	
-	public int getY(){
+
+	public double getY() {
 		return y;
 	}
-	
-	public int getZ(){
+
+	public double getZ() {
 		return z;
 	}
 
-	public Vector addiere(Vector v2) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString() {
+		return "X" + x + "Y" + y + "Z" + z;
+	}
+
+	public Vector addiere(Vector v) {
+		this.x = this.x + v.x;
+		this.y += v.y;
+		this.z += v.z;
+		return v;
 	}
 
 	public double betrag() {
-		// TODO Auto-generated method stub
+		Math.sqrt((x * x) + (y * y) + (z * z));
+		return betrag();
+	}
+
+	public Vector multipliziereSkalar(double skalar) {
+		this.x = skalar * getX();
+		this.y = skalar * getY();
+		this.z = skalar * getZ();
+
+		return new Vector();
+	}
+
+	public Vector einheitsvektor() {
+		double laengeVector = Math.sqrt((x * x) + (y * y) + (z * z));
+		multipliziereSkalar(1 / laengeVector);
+		return new Vector();
+	}
+
+	public void kreuzprodukt(Vector vector) {
+		double X2, Y2, Z2;
+		X2 = this.y * vector.z - this.z * vector.y;
+		Y2 = this.z * vector.x - this.x * vector.z;
+		Z2 = this.x * vector.y - this.y * vector.x;
+		this.x = X2;
+		this.y = Y2;
+		this.z = Z2;
+
+	}
+
+	public double multipliziere(Vector vektor) {
+
 		return 0;
 	}
 
-	
+	public double winkel(Vector vector) {
+		return 0;
+	}
+
 }
