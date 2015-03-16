@@ -4,14 +4,14 @@ public class Vector {
 	private double y;
 	private double z;
 
-	public Vector() {
-
-	}
-
 	public Vector(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+
+	public Vector() {
+		
 	}
 
 	public double getX() {
@@ -51,8 +51,8 @@ public class Vector {
 	}
 
 	public Vector einheitsvektor() {
-		double laengeVector = Math.sqrt((x * x) + (y * y) + (z * z));
-		multipliziereSkalar(1 / laengeVector);
+
+		multipliziereSkalar(1 / betrag());
 		return new Vector();
 	}
 
