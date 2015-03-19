@@ -1,79 +1,120 @@
-public class Vector {
 
+public class Vector {
+	
 	private double x;
 	private double y;
 	private double z;
 
+	public Vector(){
+		
+	}
+	
+	public Vector(int x, int y, int z) {
+		this.x = x;
+		this.y = y;
+		this.z = z; 
+	}
+	
 	public Vector(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 
-	public Vector() {
-		
-	}
-
-	public double getX() {
+	
+	public double getX(){
 		return x;
 	}
-
-	public double getY() {
+	
+	public double getY(){
 		return y;
 	}
-
-	public double getZ() {
+	
+	public double getZ(){
 		return z;
 	}
-
-	public String toString() {
-		return "X" + x + "Y" + y + "Z" + z;
+	
+	public double betrag(){
+		return Math.sqrt((x*x) + (y*y) + (z*z));
 	}
 
-	public Vector addiere(Vector v) {
-		this.x = this.x + v.x;
-		this.y += v.y;
-		this.z += v.z;
-		return v;
+	public Vector addiere(Vector vector){
+		int x = (int)(getX() + vector.getX());
+		int y = (int)(getY() + vector.getY());
+		int z = (int)(getZ() + vector.getZ());
+	
+		return new Vector(x, y, z);
+	}
+	
+	public Vector multipliziere(double skalar){
+		return new Vector((int)(getX() * skalar), (int)(getY() * skalar), (int)(getZ() * skalar));
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(x);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(y);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(z);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
 	}
 
-	public double betrag() {
-		Math.sqrt((x * x) + (y * y) + (z * z));
-		return betrag();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vector other = (Vector) obj;
+		if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x))
+			return false;
+		if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y))
+			return false;
+		if (Double.doubleToLongBits(z) != Double.doubleToLongBits(other.z))
+			return false;
+		return true;
 	}
 
-	public Vector multipliziereSkalar(double skalar) {
-		this.x = skalar * getX();
-		this.y = skalar * getY();
-		this.z = skalar * getZ();
-
-		return new Vector();
+	public double multipliziere(Vector vector){
+		double x = getX() * vector.getX();
+		double y = getY() * vector.getY();
+		double z = getZ() * vector.getZ();
+		
+		double ergebnis = x + y + z;
+		
+		return ergebnis;
 	}
 
 	public Vector einheitsvektor() {
-
-		multipliziereSkalar(1 / betrag());
-		return new Vector();
+		
+		double x = getX() / betrag();
+		double y = getY() / betrag();
+		double z = getZ() / betrag();
+		
+		return new Vector(x, y, z);
 	}
-
-	public void kreuzprodukt(Vector vector) {
-		double X2, Y2, Z2;
-		X2 = this.y * vector.z - this.z * vector.y;
-		Y2 = this.z * vector.x - this.x * vector.z;
-		Z2 = this.x * vector.y - this.y * vector.x;
-		this.x = X2;
-		this.y = Y2;
-		this.z = Z2;
-
+	
+	public Vector kreuzprodukt(Vector vector){
+		int x = (int)(getY() * vector.getZ() - getZ() * vector.getY());
+		int y = (int)(getZ() * vector.getX() - getX() * vector.getZ());
+		int z = (int)(getX() * vector.getY() - getY() * vector.getX());
+		
+		return new Vector(x, y, z);
 	}
+	public double winkel(Vector vector) { 
+		 		double winkel = Math.acos(((x * vector.x) + (y * vector.y) + (z * vector.z)) / (betrag() * vector.betrag())); 
+		 		return Math.toDegrees(winkel); 
+			} 
 
-	public double multipliziere(Vector vektor) {
-
-		return 0;
+	@Override
+	public String toString() {
+		return "[ " + String.format("%.2f", x) + "  " + String.format("%.2f", y) + "  " + String.format("%.2f", z) + " ]";
 	}
-
-	public double winkel(Vector vector) {
-		return 0;
-	}
-
 }
