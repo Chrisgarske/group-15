@@ -6,7 +6,9 @@ public class Vector {
 	private double z;
 
 	public Vector(){
-		
+		x = 0.0;
+		y = 0.0;
+		z = 0.0;
 	}
 	
 	public Vector(int x, int y, int z) {
