@@ -41,15 +41,15 @@ public class Vector {
 	}
 
 	public Vector addiere(Vector vector){
-		int x = (int)(getX() + vector.getX());
-		int y = (int)(getY() + vector.getY());
-		int z = (int)(getZ() + vector.getZ());
+		double x = getX() + vector.getX();
+		double y = getY() + vector.getY();
+		double z = getZ() + vector.getZ();
 	
 		return new Vector(x, y, z);
 	}
 	
 	public Vector multipliziere(double skalar){
-		return new Vector((int)(getX() * skalar), (int)(getY() * skalar), (int)(getZ() * skalar));
+		return new Vector((getX() * skalar), (getY() * skalar), (getZ() * skalar));
 	}
 	
 	@Override
@@ -68,8 +68,6 @@ public class Vector {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
