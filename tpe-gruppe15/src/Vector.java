@@ -66,12 +66,16 @@ public class Vector {
 
 	// Der Einheitsvektor wird bestimmt
 	public Vector einheitsvektor() {
+		if (betrag() != 0) {
+			double x = getX() / betrag();
+			double y = getY() / betrag();
+			double z = getZ() / betrag();
 
-		double x = getX() / betrag();
-		double y = getY() / betrag();
-		double z = getZ() / betrag();
-
-		return new Vector(x, y, z);
+			return new Vector(x, y, z);
+		} else {
+			return null; // Einheitsvektor kann hier nicht bestimmt werden, da
+							// der Betrag 0 ist
+		}
 	}
 
 	// Bestimmt das Kreuzprodukt mit dem gegebenen Vektor
