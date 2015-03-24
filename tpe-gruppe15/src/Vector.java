@@ -1,51 +1,96 @@
 public class Vector {
-	
+	// Attribute
 	private double x;
 	private double y;
 	private double z;
 
-	public Vector(){
+	// Konstruktor
+	public Vector() {
 		this.x = 0.0;
 		this.y = 0.0;
 		this.z = 0.0;
 	}
-	
+
+	// Erzeugt einen neuen Vektor mit den angebgebenen Elementen
 	public Vector(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
-		this.z = z; 
-	}
-	
-	
-	public double getX(){
-		return x;
-	}
-	
-	public double getY(){
-		return y;
-	}
-	
-	public double getZ(){
-		return z;
-	}
-	
-	public double betrag(){
-		return Math.sqrt((x*x) + (y*y) + (z*z));
+		this.z = z;
 	}
 
-	public Vector addiere(Vector vector){
+	// Liefert die X-Koordinate/Komponente des Vektors
+	public double getX() {
+		return x;
+	}
+
+	// Liefert die Y-Koordinate/Komponente des Vektors
+	public double getY() {
+		return y;
+	}
+
+	// Liefert die Z-Koordinate/Komponente des Vektors
+	public double getZ() {
+		return z;
+	}
+
+	// Bestimmt die Länge bzw. den Betrag des Vektors
+	public double betrag() {
+		return Math.sqrt((x * x) + (y * y) + (z * z));
+	}
+
+	// Addiert den gegebenen Vektor zu den aktuellen Vektor
+	public Vector addiere(Vector vector) {
 		double x = getX() + vector.getX();
 		double y = getY() + vector.getY();
 		double z = getZ() + vector.getZ();
-	
+
 		return new Vector(x, y, z);
 	}
-	
-	public Vector multipliziere(double skalar){
-		return new Vector((getX() * skalar), (getY() * skalar), (getZ() * skalar));
+
+	// Multiplikation des Vektors mit einem Skalar
+	public Vector multipliziere(double skalar) {
+		return new Vector((getX() * skalar), (getY() * skalar),
+				(getZ() * skalar));
 	}
-	
-	
+
+	// Multiplikation des Vektors mit einem anderen Vektor
+	public double multipliziere(Vector vector) {
+		double x = getX() * vector.getX();
+		double y = getY() * vector.getY();
+		double z = getZ() * vector.getZ();
+
+		double ergebnis = x + y + z;
+
+		return ergebnis;
+	}
+
+	// Der Einheitsvektor wird bestimmt
+	public Vector einheitsvektor() {
+
+		double x = getX() / betrag();
+		double y = getY() / betrag();
+		double z = getZ() / betrag();
+
+		return new Vector(x, y, z);
+	}
+
+	// Bestimmt das Kreuzprodukt mit dem gegebenen Vektor
+	public Vector kreuzprodukt(Vector vector) {
+		int x = (int) (getY() * vector.getZ() - getZ() * vector.getY());
+		int y = (int) (getZ() * vector.getX() - getX() * vector.getZ());
+		int z = (int) (getX() * vector.getY() - getY() * vector.getX());
+
+		return new Vector(x, y, z);
+	}
+
+	// Bestimmmt den eingeschlossenen Winkel der beiden
+	public double winkel(Vector vector) {
+		double winkel = Math
+				.acos(((x * vector.x) + (y * vector.y) + (z * vector.z))
+						/ (betrag() * vector.betrag()));
+		return Math.toDegrees(winkel);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -78,39 +123,10 @@ public class Vector {
 		return true;
 	}
 
-	public double multipliziere(Vector vector){
-		double x = getX() * vector.getX();
-		double y = getY() * vector.getY();
-		double z = getZ() * vector.getZ();
-		
-		double ergebnis = x + y + z;
-		
-		return ergebnis;
-	}
-
-	public Vector einheitsvektor() {
-		
-		double x = getX() / betrag();
-		double y = getY() / betrag();
-		double z = getZ() / betrag();
-		
-		return new Vector(x, y, z);
-	}
-	
-	public Vector kreuzprodukt(Vector vector){
-		int x = (int)(getY() * vector.getZ() - getZ() * vector.getY());
-		int y = (int)(getZ() * vector.getX() - getX() * vector.getZ());
-		int z = (int)(getX() * vector.getY() - getY() * vector.getX());
-		
-		return new Vector(x, y, z);
-	}
-	public double winkel(Vector vector) { 
-		 		double winkel = Math.acos(((x * vector.x) + (y * vector.y) + (z * vector.z)) / (betrag() * vector.betrag())); 
-		 		return Math.toDegrees(winkel); 
-			} 
-
 	@Override
 	public String toString() {
-		return "[ " + String.format("%.2f", x) + "  " + String.format("%.2f", y) + "  " + String.format("%.2f", z) + " ]";
+		return "[ " + String.format("%.2f", x) + "  "
+				+ String.format("%.2f", y) + "  " + String.format("%.2f", z)
+				+ " ]";
 	}
 }
