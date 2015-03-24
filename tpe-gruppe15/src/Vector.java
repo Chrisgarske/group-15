@@ -1,4 +1,3 @@
-
 public class Vector {
 	
 	private double x;
@@ -6,23 +5,17 @@ public class Vector {
 	private double z;
 
 	public Vector(){
-		x = 0.0;
-		y = 0.0;
-		z = 0.0;
-	}
-	
-	public Vector(int x, int y, int z) {
-		this.x = x;
-		this.y = y;
-		this.z = z; 
+		this.x = 0.0;
+		this.y = 0.0;
+		this.z = 0.0;
 	}
 	
 	public Vector(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
-		this.z = z;
+		this.z = z; 
 	}
-
+	
 	
 	public double getX(){
 		return x;
@@ -52,6 +45,7 @@ public class Vector {
 		return new Vector((getX() * skalar), (getY() * skalar), (getZ() * skalar));
 	}
 	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,6 +62,8 @@ public class Vector {
 
 	@Override
 	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
