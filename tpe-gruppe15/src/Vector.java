@@ -4,7 +4,7 @@ public class Vector {
 	private double y;
 	private double z;
 
-	// Konstruktor
+	// Konstruktoren
 	public Vector() {
 		this.x = 0.0;
 		this.y = 0.0;
@@ -38,7 +38,7 @@ public class Vector {
 		return Math.sqrt((x * x) + (y * y) + (z * z));
 	}
 
-	// Addiert den gegebenen Vektor zu den aktuellen Vektor
+	// Addition des gegebenen Vektors mit einem Vektor
 	public Vector addiere(Vector vector) {
 		double x = getX() + vector.getX();
 		double y = getY() + vector.getY();
