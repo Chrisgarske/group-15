@@ -64,7 +64,7 @@ public class Vector {
 		return ergebnis;
 	}
 
-	// Der Einheitsvektor wird bestimmt
+	// Der Einheitsvektor wird bestimmt (außer, wenn der Betrag 0 ist)
 	public Vector einheitsvektor() {
 		if (betrag() != 0) {
 			double x = getX() / betrag();
