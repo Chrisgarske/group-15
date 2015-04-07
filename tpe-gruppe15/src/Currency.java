@@ -5,7 +5,6 @@ public class Currency extends Currencies {
 	private double exchangeRate;
 	private boolean subunit;
 
-	@Immutable
 	public Currency(String name, String code, double exchangeRate,
 			boolean subunit) {
 		this.name = name;
@@ -14,9 +13,13 @@ public class Currency extends Currencies {
 		this.subunit = subunit;
 	}
 
-	public double convert(long betrag, Currency toWaehrung) {
+	public long convert(long betrag, Currency toWaehrung) {
+		/**
+		 * zuerst wird der Betrag in Dollar umgerechnet, anschlieﬂend von Dollar
+		 * in die Zielw‰hrung
+		 */
+		return (long) ((betrag * getExchangeRate()) * toWaehrung.getExchangeRate());
 
-		return (betrag) / toWaehrung.exchangeRate;
 	}
 
 	public double getExchangeRate() {
