@@ -1,71 +1,101 @@
-public class Amount {
+public class Amount implements Currencies {
 
 	private long amount;
 	private Currency currency;
-	
-    public Amount(long amount, Currency currency) {
-    	this.amount = amount;
-    	this.currency = currency;
-    }
 
-    public Amount(double amount, Currency currency) {
-    	this.amount =((long)(amount*100))*100;
-    	this.currency = currency;
-    }
+	public Amount(long amount, Currency currency) {
+		this.amount = amount;
+		this.currency = currency;
+	}
 
-    public Amount add(Amount other) {
-    	currency.convert(amount, other.currency);
-    	long amount = this.amount + other.amount;
-    	return new Amount(amount, currency);
-    }
+	public Amount(double amount, Currency currency) {
+		this.amount = ((long) (amount * 100)) * 100;
+		this.currency = currency;
+	}
 
-    public Amount subtract(Amount other) {
-    	currency.convert(amount, other.currency);
-    	long amount = this.amount - other.amount;
-    	return new Amount(amount, currency);
-    }
+	public Amount add(Amount other) {
+		long summe;
+		if (this.currency.equals(other.currency)) {
+			summe = this.amount + other.amount;
+		} else {
+			long ergebnis = currency.convert(amount, other.currency);
+			summe = ergebnis + other.amount;
+		}
+		return new Amount(summe, other.currency);
+	}
 
-    public Amount multiply(double factor) {
-    	double betrag= this.amount*factor;
-    	return new Amount(betrag, currency);
-    }
+	public Amount subtract(Amount other) {
+		long summe;
+		if (this.currency.equals(other.currency)) {
+			summe = this.amount - other.amount;
+		} else {
+			long ergebnis = currency.convert(amount, other.currency);
+			summe = ergebnis - other.amount;
+		}
+		return new Amount(summe, other.currency);
+	}
 
-    public Amount multiply(int factor) {
-    	int betrag= (int) (this.amount*factor);
-    	return new Amount(betrag, currency);
-    }
+	public Amount multiply(double factor) {
+		double betrag = this.amount;
+		betrag *= factor;
 
-    public Amount percentage(int percent) {
-    	return new Amount(amount*percent/100, currency);
-    }
+		return new Amount(betrag, currency);
+	}
 
- /*   public long toLong() {
-    	return amount; 
-    } */
+	public Amount multiply(int factor) {
+		long betrag = this.amount;
+		betrag *= factor;
+		return new Amount(betrag, currency);
+	}
 
-    public int getSign() {
-    	if (amount < 0) {
-    		return -1;
-    	} else {
-    		return 1;
-    	}
-    		
-    	
-    }
+	public Amount percentage(int percent) {
+		long betrag = this.amount;
+		return new Amount(betrag * percent / 100, currency);
+	}
 
-  /*  public double toDouble() {
-    	return amount.toDouble();
-    }*/
+	public long toLong() {
+		double betrag = amount;
+		betrag /= 10000;
+		long endBetrag =(long) Math.floor(betrag * 100);
+		return endBetrag;
+	}
 
-    public Currency getCurrency() {
-    	return this.currency;
-    }
+	public int getSign() {
+		if (amount < 0) {
+			return -1;
+		} else {
+			return 1;
+		}
 
-    public String toString() {
-    	return "Amount " + amount + "Currency " + currency;
-    }
+	}
 
-    @Override
+	// yap beni recep
+	public double toDouble() {
+		double betrag = amount;
+		betrag /= 10000;
+		return (Math.floor(betrag * 100) / 100);
+	}
+
+	public Currency getCurrency() {
+		return this.currency;
+	}
+
+	public String toString() {
+
+		if (currency.getName().equals(YEN.getName())) {
+			return amount + " " + currency.getCode();
+		} else if (amount < 1 && amount > -1) {
+			double betrag = this.amount;
+			betrag /= 10000;
+			return String.format("%.2f", betrag) + " " + currency.getCode();
+		} else {
+			double betrag = this.amount;
+			betrag /= 10000;
+			return String.format("%.2f", betrag) + " " + currency.getCode();
+		}
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -75,7 +105,7 @@ public class Amount {
 		return result;
 	}
 
-    @Override
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -93,4 +123,5 @@ public class Amount {
 			return false;
 		return true;
 	}
+
 }

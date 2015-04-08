@@ -1,4 +1,4 @@
-public class Currency extends Currencies {
+public class Currency implements Currencies {
 	// Attribute
 	private String name;
 	private String code;
@@ -23,19 +23,19 @@ public class Currency extends Currencies {
 	}
 
 	public double getExchangeRate() {
-		return exchangeRate;
+		return this.exchangeRate;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public String getCode() {
-		return code;
+		return this.code;
 	}
 
 	public boolean hasSubunit() {
-		return subunit;
+		return this.subunit;
 	}
 
 	@Override
@@ -78,9 +78,8 @@ public class Currency extends Currencies {
 		return true;
 	}
 
-	@Override
+	
 	public String toString() {
-		return "Currency [name=" + name + ", code=" + code + ", exchangeRate="
-				+ exchangeRate + ", subunit=" + subunit + "]";
+		return name + "[" + code + "] 1 $ = " + exchangeRate + code;
 	}
 }

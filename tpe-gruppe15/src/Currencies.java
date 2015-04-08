@@ -1,4 +1,4 @@
-public class Currencies {
+public interface Currencies {
 
 	/** US-Dollar */
 	public static final Currency DOLLAR = new Currency("Dollar", "$", 1.0000,
