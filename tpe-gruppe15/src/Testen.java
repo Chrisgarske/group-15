@@ -15,9 +15,9 @@ import org.junit.*;
 	@Test
 	public void testAddieren(){
 		Amount betrag = new Amount(89, DOLLAR);
-		Amount betrag2 = new Amount(55, EURO);
+		Amount betrag2 = new Amount(55, DOLLAR);
 		
-		assertEquals(new Amount(167, EURO), betrag.add(betrag2));
+		assertEquals(new Amount(144, DOLLAR), betrag.add(betrag2));
 	}
 	
 	@Test
@@ -92,7 +92,8 @@ import org.junit.*;
 	@Test
 	public void testPost(){
 		Account taib = new Account("Taib", DOLLAR);
-		
+		Amount betrag = new Amount(50, DOLLAR);
+		taib.post(betrag);
 		assertEquals(new Amount(0, DOLLAR), taib.total());
 	}
 	
