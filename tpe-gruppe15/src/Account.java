@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Account {
 	/**
-	 * Eine Liste der Objekte (Amount) wird angelegt.
+	 * Eine Liste der Objekte (Amount) wird angelegt..
 	 * 
 	 */
 
