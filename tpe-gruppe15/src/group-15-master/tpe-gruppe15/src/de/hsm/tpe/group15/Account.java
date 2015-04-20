@@ -1,40 +1,39 @@
+/* 2015 BÃ¼sra Yildiz, Taib Demirci, Ilker Turan  */
 package de.hsm.tpe.group15;
-/* 2015 Büsra Yildiz, Taib Demirci, Ilker Turan  */
-
 /** 
- * Klasse, die Buchungen verwalten kann. Jedes Konto hat einen Inhaber (owner) und eine Währung(currency), auf die das Konto lautet.
+ * Klasse, die Buchungen verwalten kann. Jedes Konto hat einen Inhaber (owner) und eine WÃ¤hrung(currency), auf die das Konto lautet.
  *<p>
  * Neue Instanzen werden mit Hilfe des Konstruktors erzeugt und initialisiert. 
  *<p>
- *Eine Liste der Beträge wird angelegt.
+ *Eine Liste der BetrÃ¤ge wird angelegt.
  *<p>
- * Die Klasse erlaubt es, positive wie negative Beträge auf das Konto zu buchen. 
- * Wenn der gebuchte Betrag in Fremdwährung ist, also von der Kontowährung abweicht, 
+ * Die Klasse erlaubt es, positive wie negative BetrÃ¤ge auf das Konto zu buchen. 
+ * Wenn der gebuchte Betrag in FremdwÃ¤hrung ist, also von der KontowÃ¤hrung abweicht, 
  * muss dieser Betrag automatisch umgerechnet werden.
  * <p>
- * Außerdem kann man die Summe aller Buchungen (Saldo) auf dem Konto abfragen.
+ * AuÃŸerdem kann man die Summe aller Buchungen (Saldo) auf dem Konto abfragen.
  * <p>
  * Die Bank kann einen gewissen Promillesatz vom Konto abziehen.
  * <p>
  * Die Klasse erlaubt es, einen Auszug des Kontos zu bekommen.
  *
- * @author Büsra, Ilker, Taib
+ * @author BÃ¼sra, Ilker, Taib
  */
 import java.util.ArrayList;
 
 public class Account implements Currencies {
-	/** Eine Liste der Objekte (Beträge) wird angelegt. */
+	/** Eine Liste der Objekte (BetrÃ¤ge) wird angelegt. */
 	ArrayList<Double> list = new ArrayList<Double>();
 	/** Kontoinhaber wird angelegt */
 	private String owner;
-	/** Eine Währung wird angelegt, auf die das Konto lautet. */
+	/** Eine WÃ¤hrung wird angelegt, auf die das Konto lautet. */
 	private Currency currency;
 
 	/**
-	 * Erzeugt einen neuen Kontoinhaber und die jeweilige Währung dessen.
+	 * Erzeugt einen neuen Kontoinhaber und die jeweilige WÃ¤hrung dessen.
 	 * 
 	 * @param owner
-	 *            -Kontoinhaber * @param currency-Währung auf die das Konto
+	 *            -Kontoinhaber * @param currency-WÃ¤hrung auf die das Konto
 	 *            lautet.
 	 * */
 	public Account(String owner, Currency currency) {
@@ -42,24 +41,24 @@ public class Account implements Currencies {
 		this.currency = currency;
 	}
 
-	/** @return gibt die Währung zurück */
+	/** @return gibt die WÃ¤hrung zurÃ¼ck */
 	public Currency getCurrency() {
 		return currency;
 	}
 
-	/** @return gibt den Kontoinhaber zurück */
+	/** @return gibt den Kontoinhaber zurÃ¼ck */
 	public String getOwner() {
 		return owner;
 	}
 
 	/**
-	 * Beträge werden auf das Konto gebucht. Ist der Betrag in Fremdwährung,
-	 * wird er automatisch umgerechnet. Die Beträge werden an das Array "list"
-	 * drangehängt.
+	 * BetrÃ¤ge werden auf das Konto gebucht. Ist der Betrag in FremdwÃ¤hrung,
+	 * wird er automatisch umgerechnet. Die BetrÃ¤ge werden an das Array "list"
+	 * drangehÃ¤ngt.
 	 * 
 	 * @param betrag
 	 *            -eingegebener Betrag, der auf das Konto gebucht werden soll +
-	 *            die Währung
+	 *            die WÃ¤hrung
 	 */
 	public void post(Amount betrag) {
 		if (!(this.currency.equals(betrag.getCurrency()))) {
@@ -72,7 +71,7 @@ public class Account implements Currencies {
 		}
 	}
 
-	/** @return Die Summe (Saldo) aller Buchungen werden zurückgegeben */
+	/** @return Die Summe (Saldo) aller Buchungen werden zurÃ¼ckgegeben */
 	public Amount total() {
 		double summe = 0.0;
 		for (Double stelle : list) {
@@ -83,8 +82,8 @@ public class Account implements Currencies {
 	}
 
 	/**
-	 * Die Bank zieht einen gewissen Promillesatz an Gebühren vom Konto ab.
-	 * Damit ergibt sich die Gebühr als das Produkt aus Saldo und Promillesatz.
+	 * Die Bank zieht einen gewissen Promillesatz an GebÃ¼hren vom Konto ab.
+	 * Damit ergibt sich die GebÃ¼hr als das Produkt aus Saldo und Promillesatz.
 	 * 
 	 * @param promille
 	 *            = der jeweilige Promillesatz
@@ -116,7 +115,7 @@ public class Account implements Currencies {
 			buchungen += String.format("%.2f", stelle) + " "
 					+ getCurrency().getCode() + " \n";
 		}
-		return "Kontoinhaber: " + getOwner() + "\n" + "Währung: "
+		return "Kontoinhaber: " + getOwner() + "\n" + "WÃ¤hrung: "
 				+ getCurrency().getName() + "\n" + "---------- \n" + buchungen
 				+ "---------- \n" + "Saldo: "
 				+ String.format("%.2f", total().toDouble()) + " "
