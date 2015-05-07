@@ -28,7 +28,7 @@ public class VectorTest {
     @Test
     public void testEqualsAndHashCode() {
 
-        Vector vektor1 = new Vector(5, 7, 9);
+        Vector vektor1 = new Vector(5, 7, 9);A
         Vector vektor2 = new Vector(5, 7, 9);
         Vector vektor3 = new Vector(5, 7, 2);
         Vector vektor4 = new Vector(5, 3, 9);

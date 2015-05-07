@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="C:\Users\Büsra\Downloads\eclipse-java-luna-SR1a-win32-x86_64\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\Büsra\Downloads\eclipse-java-luna-SR1a-win32-x86_64\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.7" sourcefiles="src/VectorTest.java,src/Vector.java" sourcepath="src" splitindex="true" use="true" version="true">
+            <link href="http://docs.oracle.com/javase/8/docs/api/"/>
+            <link href="http://hamcrest.org/JavaHamcrest/javadoc/1.3/"/>
+            <link href="file:/C:/Users/Büsra/git/group-15/tpe-gruppe15/src/group-15/tpe-gruppe15/doc/"/>
+            <link href="http://junit-team.github.io/junit/javadoc/latest/"/>
+        </javadoc>
+    </target>
+</project>
