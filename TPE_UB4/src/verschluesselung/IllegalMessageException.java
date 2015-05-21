@@ -1,5 +1,5 @@
 package verschluesselung;
 
-public class IllegalMessageException extends Exception {#
+public class IllegalMessageException extends Exception {
 
 }

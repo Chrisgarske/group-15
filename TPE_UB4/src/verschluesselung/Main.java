@@ -7,8 +7,11 @@ public class Main {
 		
 		CrypterCaesar jap = new CrypterCaesar();
 		
-		String ergebnis = jap.verschluesseln("Y", "SELAMINALEYKUEM");
+		String ergebnis = jap.verschluesseln("B", "HALLO");
 		System.out.println(ergebnis);
+		
+		String rueck = jap.entschluesseln("B", "JCNNQ");
+		System.out.println(rueck);
 	}
 
 }
