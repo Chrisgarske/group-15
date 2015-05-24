@@ -7,9 +7,8 @@ public class CrypterSubstitution implements Crypter {
 	private String verschlusselt = "UFLPWDRASJMCONQYBVTEXHZKGI";
 
 	@Override
-	public String verschluesseln(String key, String message)
+	public String verschluesseln(String key, String message){
 	// throws IllegalKeyException, IllegalMessageException
-	{
 		String geheimeBotschaft = " ";
 		String endergebnis = "";
 		for (int i = 0; i < message.length(); i++) {
@@ -28,9 +27,23 @@ public class CrypterSubstitution implements Crypter {
 	}
 
 	@Override
-	public String entschluesseln(String key, String cypherText)
-			throws IllegalKeyException, IllegalMessageException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public String entschluesseln(String key, String cypherText){
+	// throws IllegalKeyException, IllegalMessageException
+			String decodierung = " ";
+			String endDecodierung = "";
+			for (int i = 0; i < cypherText.length(); i++) {
+				for (int j = 0; j < verschlusselt.length(); j++) {
+					if (cypherText.charAt(i) == verschlusselt.charAt(j)) {
+						decodierung = klartext.substring(j, j + 1);
+						endDecodierung = endDecodierung + decodierung;
+					}
+
+				}
+
+			}
+
+			return endDecodierung;
+
+		}
+
 }

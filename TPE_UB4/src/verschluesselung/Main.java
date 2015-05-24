@@ -17,6 +17,9 @@ public class Main {
 		String ergebnis1 = hey.verschluesseln(null, "BALU");
 		System.out.println(ergebnis1);
 		
+		String subrueck = hey.entschluesseln(null, "FUCX");
+		System.out.println(subrueck);
+		
 	}
 	
 
