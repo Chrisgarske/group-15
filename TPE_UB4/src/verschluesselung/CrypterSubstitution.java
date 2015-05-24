@@ -1,7 +1,7 @@
 package verschluesselung;
 
 public class CrypterSubstitution implements Crypter {
-	// Methode für verschlüsselung
+	// Methode fÃ¼r verschlÃ¼sselung
 
 	private String klartext = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private String verschlusselt = "UFLPWDRASJMCONQYBVTEXHZKGI";
@@ -18,7 +18,7 @@ public class CrypterSubstitution implements Crypter {
 					char c=' ';
 					c=verschlusselt.charAt(i);
 					System.out.println(c);
-					//ich komme nicht mehr weiter :D
+					//hier gehts dann weiter :D
 				}
 				
 			}
