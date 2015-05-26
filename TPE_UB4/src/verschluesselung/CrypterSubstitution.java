@@ -4,7 +4,6 @@ public class CrypterSubstitution implements Crypter {
 	// Methode für verschlüsselung
 
 	private String klartext = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private String verschlusselt = "UFLPWDRASJMCONQYBVTEXHZKGI";
 
 	@Override
 	public String verschluesseln(String key, String message){
@@ -14,7 +13,7 @@ public class CrypterSubstitution implements Crypter {
 		for (int i = 0; i < message.length(); i++) {
 			for (int j = 0; j < klartext.length(); j++) {
 				if (message.charAt(i) == klartext.charAt(j)) {
-					geheimeBotschaft = verschlusselt.substring(j, j + 1);
+					geheimeBotschaft = key.substring(j, j + 1);
 					endergebnis = endergebnis + geheimeBotschaft;
 				}
 
@@ -32,8 +31,8 @@ public class CrypterSubstitution implements Crypter {
 			String decodierung = " ";
 			String endDecodierung = "";
 			for (int i = 0; i < cypherText.length(); i++) {
-				for (int j = 0; j < verschlusselt.length(); j++) {
-					if (cypherText.charAt(i) == verschlusselt.charAt(j)) {
+				for (int j = 0; j < key.length(); j++) {
+					if (cypherText.charAt(i) == key.charAt(j)) {
 						decodierung = klartext.substring(j, j + 1);
 						endDecodierung = endDecodierung + decodierung;
 					}
