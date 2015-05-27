@@ -6,10 +6,9 @@ public class CrypterCaesar implements Crypter {
 			"J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
 			"W", "X", "Y", "Z" };
 
-	char[] alpha2 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-			'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-			'Y', 'Z' };
 
+	public String klartext = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
 	@Override
 	public String verschluesseln(String key, String message)
 		//	throws IllegalKeyException, IllegalMessageException 
@@ -24,24 +23,25 @@ public class CrypterCaesar implements Crypter {
 				gefunden = false;
 			}
 		}
-
-		char[] ergebnis = message.toCharArray();
-
-		for (int i = 0; i < ergebnis.length; i++) {
-			if ((ergebnis[i] - 'A') + stelle < alpha2.length) {
-				ergebnis[i] = alpha2[(ergebnis[i] - 'A') + stelle];
-			}else{
-				int diff = (ergebnis[i] - 'A') + stelle - alpha2.length;
-				ergebnis[i] = alpha2[diff];
+		int caesar = -1;
+		String text = "";
+		String geheimText = "";
+		for (int i = 0; i < message.length(); i++) {
+			for (int j = 0; j < klartext.length(); j++) {
+				if(klartext.charAt(j) == message.charAt(i)){
+					caesar = j + stelle;
+					if(caesar > 25){
+						caesar = caesar - 26; 
+					}
+//					System.out.println(klartext.substring(caesar, caesar+1));
+					text = klartext.substring(caesar, caesar + 1); 
+					geheimText += text;
+				}
 			}
+			
 		}
 
-		String endErgebnis = "";
-		for (int i = 0; i < ergebnis.length; i++) {
-			endErgebnis += ergebnis[i];
-		}
-
-		return endErgebnis;
+		return geheimText;
 	};
 
 	@Override
@@ -58,24 +58,24 @@ public class CrypterCaesar implements Crypter {
 				gefunden = false;
 			}
 		}
-		
-		char[] ergebnis = cypherText.toCharArray();
-		
-		for (int i = 0; i < ergebnis.length; i++) {
-			if (ergebnis[i] - stelle - 'A' < 0) {
-				int diff = ergebnis[i] - stelle - 'A';
-				ergebnis[i] = alpha2[diff];
-			}else{
-				ergebnis[i] = alpha2[ergebnis[i] - stelle - 'A'];
+		int caesar = -1;
+		String text = "";
+		String decodierung = "";
+		for (int i = 0; i < cypherText.length(); i++) {
+			for (int j = 0; j < klartext.length(); j++) {
+				if(klartext.charAt(j) == cypherText.charAt(i)){
+					caesar = j - stelle;
+					if(caesar < 0){
+						caesar = 26 + caesar; 
+					}
+					text = klartext.substring(caesar, caesar + 1); 
+					decodierung += text;
+				}
 			}
+			
 		}
 		
-		String endErgebnis = "";
-		for (int i = 0; i < ergebnis.length; i++) {
-			endErgebnis += ergebnis[i];
-		}
-
-		return endErgebnis;
+		return decodierung;
 	};
 
 }

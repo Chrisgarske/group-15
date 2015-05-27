@@ -3,7 +3,7 @@ package verschluesselung;
 public class CrypterXOR implements Crypter {
 	// Methode für verschlüsselung
 
-	private String klartext = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[/]^_";
+	private String klartext = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_";
 
 	public int keyNr(String key, int x){
 		int schluesselnr = -1;
