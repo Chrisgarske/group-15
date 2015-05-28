@@ -1,12 +1,21 @@
-package verschluesselung;
+package implementierung;
 
-public class CrypterXOR implements Crypter {
-	// Methode für verschlüsselung
+import ausnahmen.IllegalKeyException;
+import ausnahmen.IllegalMessageException;
+import schnittstelle.Crypter;
 
+
+ 	class CrypterXOR extends Fehlerbehandlung implements Crypter {
+	// Methode fï¿½r verschlï¿½sselung
+
+ 	private String[] alpha = {"A", "B", "C", "D", "E", "F", "G", "H", "I",
+ 				"J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+ 				"W", "X", "Y", "Z"};
+ 	
 	private String klartext = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_";
 
 	public int keyNr(String key, int x){
-		int schluesselnr = -1;
+		int schluesselnr = -1; 
 		for (int i = 0; i < klartext.length(); i++) {
 			if(key.charAt(x) == klartext.charAt(i)){
 				schluesselnr=i;
@@ -17,9 +26,11 @@ public class CrypterXOR implements Crypter {
 		return schluesselnr;
 	}
 	
-	public String verschluesseln(String key, String message) {
-		// throws IllegalKeyException, IllegalMessageException
+	public String verschluesseln(String key, String message)throws IllegalKeyException, IllegalMessageException {
 
+		fehlerkontrolleMessage(message, this.klartext);
+		fehlerkontrolleKey(key, alpha);
+		
 		int ergebnis = -2;
 		int x = 0; 
 		String endErgebnis = "";
@@ -41,8 +52,11 @@ public class CrypterXOR implements Crypter {
 		return endErgebnis;
 	}
 
-	public String entschluesseln(String key, String cypherText) {
-		// throws IllegalKeyException, IllegalMessageException
+	public String entschluesseln(String key, String cypherText) throws IllegalKeyException, IllegalMessageException{
+		
+		fehlerkontrolleMessage(cypherText, this.klartext);
+		fehlerkontrolleKey(key, alpha);
+		
 		int ergebnis = -2;
 		int b = 0; 
 		String entschluesselt = "";

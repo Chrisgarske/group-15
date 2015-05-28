@@ -1,11 +1,22 @@
 package verschluesselung;
 
+import ausnahmen.IllegalKeyException;
+import ausnahmen.IllegalMessageException;
+import implementierung.CrypterFactory;
+import implementierung.CrypterFactory.CrypterVerfahren;
+import schnittstelle.Crypter;
+
 public class Main {
 
-	public static void main(String[] args) {
-		//Aufgabe: Kombination der Schlüssel verwenden
+	public static void main(String[] args) throws IllegalKeyException, IllegalMessageException{
+		//Aufgabe: Kombination der Schlï¿½ssel verwenden
 		
-		CrypterCaesar jap = new CrypterCaesar();
+		
+		
+		CrypterFactory factory = new CrypterFactory();
+		Crypter jap = factory.CrypterErzeugen(CrypterVerfahren.CAESAR);
+		Crypter hey = factory.CrypterErzeugen(CrypterVerfahren.SUBSTITUTION);
+		Crypter xor = factory.CrypterErzeugen(CrypterVerfahren.XOR);
 		
 //		String ergebnis = jap.verschluesseln("T", "IJKLMNOPQRSTUVWXYZABCDEFGH");
 //		System.out.println(ergebnis);
@@ -13,18 +24,11 @@ public class Main {
 //		String rueck = jap.entschluesseln("T", "CDEFGHIJKLMNOPQRSTUVWXYZAB");
 //		System.out.println(rueck);
 		
-		CrypterSubstitution hey = new CrypterSubstitution();
-		
 //		String ergebnis1 = hey.verschluesseln("UFLPWDRASJMCONQYBVTEXHZKGI", "BATMAN");
 //		System.out.println(ergebnis1);
 		
 //		String subrueck = hey.entschluesseln("UFLPWDRASJMCONQYBVTEXHZKGI", "FUEOUN");
 //		System.out.println(subrueck);
-		
-		CrypterXOR xor = new CrypterXOR();
-		
-		
-		
 		
 //		String messi = xor.verschluesseln("TPERULES", "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 //		System.out.println(messi);
@@ -33,16 +37,13 @@ public class Main {
 //		System.out.println(xavi);
 		
 		
-		String gear1 = xor.entschluesseln("WINTERISCOMING", "RXZL_FO\\W_UXX_S]KPOVQCTLTQZVG]^L_FXWWIYYVDQD\\PQTQAEXAODQAXZRQBQEA[HLZW");
-		System.out.println(gear1);
-		
-		String gear2 = jap.entschluesseln("T", "EQTXZTFOTPXQVXDTEDJDXPWCYXTQPTPXZTQDTFTPXCFMRDTFXRFWLFJVVQTFTPXVBTEETP");
-		System.out.println(gear2);
-		
-		String gear3 = hey.entschluesseln("POIUZTREWQMNBVCXYLKJHGFDSA", "KWZDFZLUZVDWBDJZKJPJDVCIEDZWVZVDFZWJZLZVDILSXJZLDXLCRLPBBWZLZVDBHZKKZV");
-		System.out.println(gear3);
-		
+//		String gear1 = xor.entschluesseln("WINTERISCOMING", "RXZL_FO\\W_UXX_S]KPOVQCTLTQZVG]^L_FXWWIYYVDQD\\PQTQAEXAODQAXZRQBQEA[HLZW");
+//		System.out.println(gear1);
+//		
+//		String gear2 = jap.entschluesseln("T", "EQTXZTFOTPXQVXDTEDJDXPWCYXTQPTPXZTQDTFTPXCFMRDTFXRFWLFJVVQTFTPXVBTEETP");
+//		System.out.println(gear2);
+//		
+//		String gear3 = hey.entschluesseln("POIUZTREWQMNBVCXYLKJHGFDSA", "KWZDFZLUZVDWBDJZKJPJDVCIEDZWVZVDFZWJZLZVDILSXJZLDXLCRLPBBWZLZVDBHZKKZV");
+//		System.out.println(gear3);
 	}
-	
-
 }
