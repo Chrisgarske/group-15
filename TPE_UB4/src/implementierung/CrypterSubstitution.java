@@ -13,6 +13,9 @@ import schnittstelle.Crypter;
 	
 	private String klartext = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+	/**
+	 * see implementierung.Crypter.verschluesseln
+	 */
 	@Override
 	public String verschluesseln(String key, String message) throws IllegalKeyException, IllegalMessageException{
 		
@@ -34,6 +37,9 @@ import schnittstelle.Crypter;
 
 	}
 
+	/**
+	 * see implementierung.Crypter.entschluesseln
+	 */
 	@Override
 	public String entschluesseln(String key, String cypherText) throws IllegalKeyException, IllegalMessageException{
 		

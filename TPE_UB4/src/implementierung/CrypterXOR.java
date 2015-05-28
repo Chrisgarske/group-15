@@ -26,6 +26,9 @@ import schnittstelle.Crypter;
 		return schluesselnr;
 	}
 	
+	/**
+	 * see implementierung.Crypter.verschluesseln
+	 */
 	public String verschluesseln(String key, String message)throws IllegalKeyException, IllegalMessageException {
 
 		fehlerkontrolleMessage(message, this.klartext);
@@ -52,6 +55,9 @@ import schnittstelle.Crypter;
 		return endErgebnis;
 	}
 
+	/**
+	 * see implementierung.Crypter.entschluesseln
+	 */
 	public String entschluesseln(String key, String cypherText) throws IllegalKeyException, IllegalMessageException{
 		
 		fehlerkontrolleMessage(cypherText, this.klartext);

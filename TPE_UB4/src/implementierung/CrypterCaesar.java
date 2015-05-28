@@ -11,6 +11,7 @@ class CrypterCaesar extends Fehlerbehandlung implements Crypter {
 
 	private String klartext = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+	
 	public void keyLaenge(String key) throws IllegalKeyException{
 		if (key.length() != 1) {
 			throw new IllegalKeyException("Schlüssel darf und muss genau einen "
@@ -19,9 +20,9 @@ class CrypterCaesar extends Fehlerbehandlung implements Crypter {
 		
 	}
 	
-	
-
-	
+	/**
+	 * see implementierung.Crypter.verschluesseln
+	 */
 	@Override
 	public String verschluesseln(String key, String message)throws IllegalKeyException, IllegalMessageException{
 		
@@ -57,6 +58,9 @@ class CrypterCaesar extends Fehlerbehandlung implements Crypter {
 		return geheimText;
 	};
 
+	/**
+	 * see implementierung.Crypter.entschluesseln
+	 */
 	@Override
 	public String entschluesseln(String key, String cypherText) throws IllegalKeyException, IllegalMessageException{
 
