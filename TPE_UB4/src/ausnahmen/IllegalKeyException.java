@@ -10,6 +10,8 @@ package ausnahmen;
  */
 public class IllegalKeyException extends Exception {
 	
+	private String nachricht = "";
+	
 	/**
 	 * Erzeugung einer Instanz ohne Parameter
 	 */
@@ -24,5 +26,10 @@ public class IllegalKeyException extends Exception {
 	 */
 	public IllegalKeyException(String message){
 		super(message);
+		this.nachricht = message;
+	}
+	
+	public void fehlermeldung(){
+		System.err.print(nachricht);
 	}
 }

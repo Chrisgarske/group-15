@@ -27,13 +27,38 @@ import schnittstelle.Crypter;
 	}
 	
 	/**
+	 * Kontrolliert, ob der eingegebene Schluessel nicht festgelegte Buchstaben oder
+	 * Zeichen enthält. Bei einem Fehler bekommmt man eine Fehlermeldung zurueck.
+	 * 
+	 * @param key der Schluessel mit der ver- oder entschluesselt wird.
+	 * @param alpha das festgelegte Alphabet
+	 * @throws IllegalKeyException die Fehlermeldung, die bei einem Fehler ausgeworfen wird
+	 * 
+	 */
+	public void fehlerkontrolleKey(String key, String[] alpha) throws IllegalKeyException{
+		for (int i = 0; i < key.length(); i++) {
+			boolean gefunden = false;
+			for (int j = 0; j < alpha.length && !gefunden; j++) {
+				if(key.substring(i, i+1).equals(alpha[j])){
+					gefunden = true;
+				}
+
+			}
+			
+			if(!gefunden){
+				throw new IllegalKeyException("Ihr Schluessel enthält nicht zulässige Zeichen!");
+			}
+		}
+	}
+	
+	/**
 	 * see implementierung.Crypter.verschluesseln
 	 */
 	public String verschluesseln(String key, String message)throws IllegalKeyException, IllegalMessageException {
-
-		fehlerkontrolleMessage(message, this.klartext);
-		fehlerkontrolleKey(key, alpha);
 		
+		fehlerkontrolleKey(key, alpha);
+		fehlerkontrolleMessage(message, this.klartext);
+				
 		int ergebnis = -2;
 		int x = 0; 
 		String endErgebnis = "";
@@ -60,8 +85,8 @@ import schnittstelle.Crypter;
 	 */
 	public String entschluesseln(String key, String cypherText) throws IllegalKeyException, IllegalMessageException{
 		
-		fehlerkontrolleMessage(cypherText, this.klartext);
 		fehlerkontrolleKey(key, alpha);
+		fehlerkontrolleMessage(cypherText, this.klartext);
 		
 		int ergebnis = -2;
 		int b = 0; 

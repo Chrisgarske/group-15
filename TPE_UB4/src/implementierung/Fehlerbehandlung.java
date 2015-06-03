@@ -17,35 +17,6 @@ import ausnahmen.IllegalKeyException;
 import ausnahmen.IllegalMessageException;
 
 	abstract class Fehlerbehandlung {
-	
-		
-	/**
-	 * Kontrolliert, ob der eingegebene Schluessel nicht festgelegte Buchstaben oder
-	 * Zeichen enthält. Bei einem Fehler bekommmt man eine Fehlermeldung zurueck.
-	 * 
-	 * @param key der Schluessel mit der ver- oder entschluesselt wird.
-	 * @param alpha das festgelegte Alphabet
-	 * @throws IllegalKeyException die Fehlermeldung, die bei einem Fehler ausgeworfen wird
-	 * 
-	 */
-	public void fehlerkontrolleKey(String key, String[] alpha) throws IllegalKeyException{
-
-			boolean gefunden = false;
-			boolean fehler = true;
-			
-			for (int i = 0; i < alpha.length && !gefunden; i++) {
-				if (key == alpha[i]) {
-					gefunden = true;
-					fehler = false;
-				}
-			}
-
-			if (fehler) {
-				throw new IllegalKeyException("Ihre Schlüsseleingabe ist nicht "
-						+ "im angegebenen Alphabet enthalten!");
-			}
-	}
-	
 	/**
 	 * Kontrolliert, ob die eingegebene Nachricht nicht leer und nicht festgelegte Buchstaben oder
 	 * Zeichen enthält. Bei einem Fehler bekommmt man eine Fehlermeldung zurueck.

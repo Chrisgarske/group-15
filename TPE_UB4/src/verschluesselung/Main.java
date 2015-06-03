@@ -11,8 +11,6 @@ public class Main {
 	public static void main(String[] args) throws IllegalKeyException, IllegalMessageException{
 		//Aufgabe: Kombination der Schl�ssel verwenden
 		
-		
-		
 		CrypterFactory factory = new CrypterFactory();
 		Crypter jap = factory.CrypterErzeugen(CrypterVerfahren.CAESAR);
 		Crypter hey = factory.CrypterErzeugen(CrypterVerfahren.SUBSTITUTION);
@@ -24,7 +22,7 @@ public class Main {
 //		String rueck = jap.entschluesseln("T", "CDEFGHIJKLMNOPQRSTUVWXYZAB");
 //		System.out.println(rueck);
 		
-//		String ergebnis1 = hey.verschluesseln("UFLPWDRASJMCONQYBVTEXHZKGI", "BATMAN");
+//		String ergebnis1 = hey.verschluesseln("UFLPWDRASJMCONQYBVTEXHZGI", "BATMAN");
 //		System.out.println(ergebnis1);
 		
 //		String subrueck = hey.entschluesseln("UFLPWDRASJMCONQYBVTEXHZKGI", "FUEOUN");
